@@ -1,0 +1,48 @@
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.numeric-inputs {
+    margin-top: 1.5rem;
+}
+
+.tel-input {
+    margin-right: 0.8rem;
+}
+
+.users-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.user-card {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.username {
+    font-weight: 600;
+}
+
+.age {
+    font-size: 0.9rem;
+    color: rgb(var(--primary-color));
+}
+
+.profile-pic {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}

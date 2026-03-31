@@ -1,0 +1,208 @@
+@font-face {
+    font-family: Heebo;
+    src: url(../assets/fonts/Heebo-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Babas;
+    src: url(../assets/fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: Passero;
+    src: url(../assets/fonts/PasseroOne-Regular.ttf);
+}
+
+:root {
+    --primary-color: 5 63 172;
+    --secondary-color: 35 134 207;
+    --background-color: 248 252 255;
+    --secondary-background-color: 238, 245, 250;
+    --accent-background-color: 197, 224, 255;
+    --text-color: 0 0 0;
+    --disabled-color: 119 118 138;
+    --box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.dark-theme {
+    --primary-color: 136, 167, 235;
+    --secondary-color: 42, 110, 199;
+    --background-color: 20, 21, 24;
+    --secondary-background-color: 31, 33, 36;
+    --accent-background-color: 28, 40, 61;
+    --text-color: 255 255 255;
+    --disabled-color: 156 163 175;
+    --box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(var(--secondary-color) / 0.3);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(var(--secondary-color));
+    border-radius: 8px;
+}
+
+
+body {
+    direction: rtl;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Heebo;
+    color: rgb(var(--text-color));
+}
+
+/* common styled elements */
+
+/*paper*/
+.paper {
+    z-index: 1;
+    background: rgb(var(--background-color));
+    color: rgb(var(--text-color));
+    padding: 1rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
+}
+
+/*icons*/
+.small-icon {
+    height: 1rem;
+}
+
+.large-icon {
+    height: 1.5rem;
+}
+
+
+/*buttons*/
+.button {
+    border: none;
+    box-shadow: var(--box-shadow);
+    background: linear-gradient(150deg, rgb(var(--secondary-color)), rgb(var(--primary-color)));
+    color: rgb(var(--secondary-background-color));
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 0.5rem;
+
+}
+
+.button:hover {
+    background: linear-gradient(150deg, rgb(var(--secondary-color)), rgb(var(--primary-color))), rgba(0, 0, 0, 0.15);
+    background-blend-mode: multiply;
+}
+
+.button:active {
+    background: linear-gradient(150deg, rgb(var(--secondary-color)), rgb(var(--primary-color))), rgba(0, 0, 0, 0.25);
+    background-blend-mode: multiply;
+}
+
+.button:disabled {
+    background: rgb(var(--disabled-color));
+}
+
+.ghost-button {
+    border: none;
+    box-shadow: var(--box-shadow);
+    background: linear-gradient(150deg, rgb(var(--secondary-background-color)), rgb(var(--background-color)));
+    color: rgb(var(--primary-color));
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 0 0.5rem;
+
+}
+
+.ghost-button:hover {
+    background: linear-gradient(150deg, rgb(var(--secondary-background-color)), rgb(var(--background-color))), rgba(0, 0, 0, 0.05);
+    background-blend-mode: multiply;
+}
+
+.ghost-button:active {
+    background: linear-gradient(150deg, rgb(var(--secondary-background-color)), rgb(var(--background-color))), rgba(0, 0, 0, 0.2);
+    background-blend-mode: multiply;
+}
+
+.ghost-button:disabled {
+    background: rgb(var(--disabled-color));
+}
+
+/*input*/
+.form-input {
+    font-family: Heebo;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgb(var(--secondary-color)/ 0.3);
+    outline: none;
+    color: rgb(var(--text-color));
+    background: rgb(var(--secondary-background-color));
+    box-shadow: 0 0 6px rgba(var(--text-color)/ 0.15);
+}
+
+.form-input:focus {
+    background: rgb(var(--secondary-background-color));
+    box-shadow: 0 0 0 2px rgba(var(--secondary-color)/ 0.25);
+}
+
+.form-input::placeholder {
+    font-family: Heebo;
+    font-size: 0.8rem;
+    color: rgba(var(--text-color) / 0.4);
+}
+
+.input-label {
+    color: rgb(var(--primary-color));
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-left: 0.3rem;
+}
+
+.text-area {
+    resize: none;
+    width: 90%;
+}
+
+.long-input {
+    width: 70%;
+}
+
+.medium-input {
+    width: 30%;
+}
+
+.form-input.no-arrows::-webkit-outer-spin-button,
+.form-input.no-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-fieldset {
+    border: none;
+    padding: 0;
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+    padding-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.radio-input {
+    accent-color: rgb(var(--secondary-color));
+    background-color: rgb(var(--background-color));
+    cursor: pointer;
+}

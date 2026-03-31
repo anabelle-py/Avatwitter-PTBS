@@ -1,0 +1,16 @@
+export const elementIds = {
+    themeToggle: 'theme-toggle',
+    tweetsContainer: 'tweets-container',
+    tweetForm: 'tweet-form',
+    tweetAuthor: 'tweet-author',
+    tweetType: 'tweet-type',
+    tweetContent: 'tweet-content',
+    animalList: 'animal-list',
+    usersContainer: 'users-container',
+    userForm: 'user-form',
+    username: 'username',
+    age: 'age',
+    phone: 'phone',
+    animal: 'animal',
+    nation: 'nation',
+}

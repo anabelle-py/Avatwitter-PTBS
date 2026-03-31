@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="style/layout.css" />
+    <link rel="stylesheet" href="style/tweets.css" />
+    <link rel="stylesheet" href="style/users.css" />
+    <link rel="icon" href="assets/logo.ico" type="image/png" />
+    <title>AVATWITTER</title>
+</head>
+
+<body>
+    <header class="paper header">
+        <span class="header-logo-area">
+            <img src="assets/logo.png" class="header-logo" alt="logo" />
+            <span class="header-title">AVATWITTER</span>
+        </span>
+        <button id="theme-toggle" class="theme-toggle ghost-button"><img src="assets/La.png"
+                class="large-icon" /></button>
+    </header>
+
+    <main>
+        <div class="right-panel">
+            <span class="welcome-message">ברוכים הבאים!</span>
+            <div class="top-message">
+                <span>המאבק נגד אומת האש מתחיל כאן</span>
+                <span>
+                    <img src="./assets/air.png" class="small-icon" />
+                    <img src="./assets/earth.png" class="small-icon" />
+                    <img src="./assets/water.png" class="small-icon" />
+                    <img src="./assets/fire.png" class="small-icon" />
+                </span>
+            </div>
+
+            <div class="tweet-form-container paper">
+                <form id="tweet-form" class="tweet-form">
+                    <label for="tweet-author" class="input-label">משתמש:</label>
+                    <select id="tweet-author" name="tweet-author" class="form-input long-input" required>
+                        <option value="">בחר משתמש...</option>
+                    </select>
+
+                    <label for="tweet-type" class="input-label">סוג ציוץ:</label>
+                    <fieldset id="tweet-type" name="tweet-type" class="form-fieldset" required>
+                        <label class="radio-label">
+                            <input type="radio" name="tweet-type" value="normal" class="radio-input" required checked>
+                            רגיל
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="tweet-type" value="fight" class="radio-input">
+                            מאבק
+                        </label>
+                    </fieldset>
+
+                    <label for="tweet-content" class="input-label">תוכן הציוץ:</label>
+                    <textarea id="tweet-content" name="tweet-content" placeholder="המחשבות שלי..." rows="3"
+                        class="form-input text-area" maxlength="200" required></textarea>
+
+                    <input type="submit" value="שלח" class="button">
+                </form>
+            </div>
+        </div>
+
+        <div class="center-panel">
+            <h2>הפיד שלי</h2>
+            <fieldset id="type-filter" name="type-filter" class="form-fieldset tweet-filters" required>
+                <label class="radio-label">
+                    <input type="radio" name="type-filter" value="all" class="radio-input" required checked>
+                    כל הציוצים
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="type-filter" value="normal" class="radio-input" required>
+                    ציוצים רגילים
+                </label>
+
+                <label class="radio-label">
+                    <input type="radio" name="type-filter" value="fight" class="radio-input">
+                    ציוצי מאבק
+                </label>
+            </fieldset>
+
+            <div id="tweets-container" class="tweets-container"></div>
+        </div>
+
+        <div class="left-panel">
+            <h2>הרשמה</h2>
+            <div class="user-form-container paper">
+                <form id="user-form" class="user-form">
+
+                    <label for="username" class="input-label">שם משתמש:</label>
+                    <input type="text" id="username" name="username" maxlength="25" required
+                        class="form-input long-input">
+
+                    <div class="numeric-inputs">
+                        <label for="age" class="input-label">גיל:</label>
+                        <input type="number" id="age" name="age" min="1" max="99" required class="form-input no-arrows">
+
+                        <label for="phone" class="input-label  tel-input">מספר טלפון:</label>
+                        <input type="tel" id="phone" name="phone" pattern="^\+?[0-9]{7,15}$" required
+                            class="form-input medium-input">
+                    </div>
+
+                    <label for="nation" class="input-label">אומה:</label>
+                    <fieldset id="nation" name="nation" class="form-fieldset" required>
+                        <label class="radio-label">
+                            <input type="radio" name="nation" value="air" class="radio-input" required>
+                            <img src="./assets/air.png" class="small-icon" />
+                            אוויר
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="nation" value="earth" class="radio-input">
+                            <img src="./assets/earth.png" class="small-icon" />
+                            אדמה
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="nation" value="water" class="radio-input">
+                            <img src="./assets/water.png" class="small-icon" />
+                            מים
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="nation" value="fire" class="radio-input">
+                            <img src="./assets/fire.png" class="small-icon" />
+                            אש
+                        </label>
+                    </fieldset>
+
+                    <label for="animal" class="input-label">חיה אהובה:</label>
+                    <input type="text" id="animal" name="animal" list="animal-list" placeholder="חפש..." required
+                        class="form-input">
+                    <datalist id="animal-list"></datalist>
+
+                    <input type="submit" value="הירשם" class="button">
+                </form>
+            </div>
+            <h3>משתמשים רשומים</h3>
+            <div id="users-container" class="users-container"></div>
+        </div>
+    </main>
+
+    <footer class="paper footer">
+        גרסה 6.0.1 - נוסף מצב כהה!
+    </footer>
+
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+export const classNames = {
+    darkTheme: 'dark-theme',
+    paper: 'paper',
+    tweet: 'tweet',
+    tweetHeader: 'tweet-header',
+    tweetAuthor: 'tweet-author',
+    tweetTime: 'tweet-time',
+    tweetContent: 'tweet-content',
+    smallIcon: 'small-icon',
+    largeIcon: 'large-icon',
+    userCard: 'user-card',
+    userName: 'username',
+    age: 'age',
+    ghostButton: 'ghost-button',
+    profilePic: 'profile-pic',
+    userDetails: 'user-details',
+}
