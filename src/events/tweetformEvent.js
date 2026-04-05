@@ -39,8 +39,7 @@ export function updateTweets() {
 
 /*this is a temporary solution */
 function startEditTweet(tweetId) {
-    //why you render all tweets again? you can just find the tweet element and update it, no need to re-render all tweets
-    //CR: this is not edit, this is delete and create, you can just change the content of the tweet and update the DOM element instead of remove and create a new one
+    //CR: why you render all tweets again? you can just find the tweet element and update it, no need to re-render all tweets
     const tweet = allTweets.find((t) => t.id === tweetId);
 
     const newContent = prompt('Edit tweet:', tweet.content);
