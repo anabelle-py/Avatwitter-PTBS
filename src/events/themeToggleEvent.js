@@ -1,9 +1,9 @@
-import { classNames } from "../constants/classNames.js";
+import { classNames } from '../constants/classNames.js';
 import { stateItems } from '../constants/stateItems.js';
 import { elementIds } from '../constants/elementIds.js';
 
-const lightModeIcon = `<img src="assets/Tui.png" class="${classNames.largeIcon}"/>`
-const darkModeIcon = `<img src="assets/La.png" class="${classNames.largeIcon}"/>`
+const lightModeIcon = `<img src="assets/Tui.png" class="${classNames.largeIcon}"/>`;
+const darkModeIcon = `<img src="assets/La.png" class="${classNames.largeIcon}"/>`;
 
 const lightMode = 'light';
 const darkMode = 'dark';
@@ -19,7 +19,7 @@ function toggleTheme() {
 
 function updateThemeIcon(isDark) {
     const themeButton = document.getElementById(elementIds.themeToggle);
-    themeButton.innerHTML = isDark ? lightModeIcon : darkModeIcon;
+    themeButton.innerHTML = isDark ? lightModeIcon : darkModeIcon; //CR: don't use innerHTML, use DOM manipulation instead
 }
 
 function loadTheme() {
@@ -32,10 +32,9 @@ function loadTheme() {
     updateThemeIcon(isDark);
 }
 
-
 export function initializeThemeToggle() {
     const btn = document.getElementById(elementIds.themeToggle);
     btn.addEventListener('click', toggleTheme);
 
-    loadTheme()
+    loadTheme();
 }

@@ -10,7 +10,13 @@ export function createTweetElement(tweet, tweetEditCallback) {
     tweetContainer.id = tweet.id;
     tweetContainer.className = `${classNames.tweet} ${classNames.paper} ${tweet.type === TweetType.normal ? '' : 'fight'}`;
 
-    const tweetHeaderEl = createTweetHeader(tweet.author, tweet.date, isTextOffensive(tweet.content), tweetContainer, tweetEditCallback);
+    const tweetHeaderEl = createTweetHeader(
+        tweet.author,
+        tweet.date,
+        isTextOffensive(tweet.content),
+        tweetContainer,
+        tweetEditCallback,
+    );
 
     const contentEl = document.createElement('p');
     contentEl.className = classNames.tweetContent;
@@ -21,8 +27,13 @@ export function createTweetElement(tweet, tweetEditCallback) {
     return tweetContainer;
 }
 
-
-function createTweetHeader(author, date, isDeletable, tweetEl, tweetEditCallback) {
+function createTweetHeader(
+    author,
+    date,
+    isDeletable,
+    tweetEl,
+    tweetEditCallback,
+) {
     const header = document.createElement('div');
     header.className = classNames.tweetHeader;
 
@@ -41,7 +52,9 @@ function createTweetHeader(author, date, isDeletable, tweetEl, tweetEditCallback
     const profilePic = getProfilePictureFromAuthorName(author);
 
     if (isDeletable) {
-        const deleteButton = createIconButton('./assets/delete.svg', () => tweetEl.remove());
+        const deleteButton = createIconButton('./assets/delete.svg', () =>
+            tweetEl.remove(),
+        ); //CR: forgot to remove the tweet from the local storage
         leftPart.appendChild(deleteButton);
     }
 
@@ -58,20 +71,19 @@ function createTweetHeader(author, date, isDeletable, tweetEl, tweetEditCallback
 }
 
 function getProfilePictureFromAuthorName(author) {
-    const user = registeredUsers.find(user => user.username === author);
-    return createProfilePicture(user?.animal ?? '')
+    const user = registeredUsers.find((user) => user.username === author);
+    return createProfilePicture(user?.animal ?? '');
 }
 
-
 function createIconButton(iconSrc, onClickCallback) {
-    const icon = document.createElement("img");
+    const icon = document.createElement('img');
     icon.src = iconSrc;
     icon.className = classNames.smallIcon;
 
-    const button = document.createElement("button");
+    const button = document.createElement('button');
     button.appendChild(icon);
     button.className = classNames.ghostButton;
 
-    button.addEventListener("click", onClickCallback);
+    button.addEventListener('click', onClickCallback);
     return button;
 }
