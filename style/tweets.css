@@ -69,3 +69,10 @@
 .tweet-filters {
   margin-bottom: 2rem;
 }
+
+.tweet-edit-textarea {
+  width: 100%;
+  min-height: 4rem;
+  box-sizing: border-box;
+  resize: none;
+}

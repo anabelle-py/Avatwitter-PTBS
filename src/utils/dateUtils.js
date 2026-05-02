@@ -1,5 +1,5 @@
 export function formatTweetTime(date) {
-return new Date(date).toLocaleString('he-IL', {
+  return new Date(date).toLocaleString('he-IL', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',

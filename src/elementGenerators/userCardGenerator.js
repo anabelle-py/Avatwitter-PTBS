@@ -2,6 +2,7 @@ import { elementIds } from '../constants/elementIds.js';
 import { classNames } from '../constants/classNames.js';
 import { nationsImgUrls } from '../constants/nations.js';
 import { getProfilePic } from '../utils/profilePictureUtils.js';
+import { displayNames } from '../constants/DisplayNames.js';
 
 export function createUserCard(user) {
     const usersContainer = document.getElementById(elementIds.usersContainer);
@@ -14,7 +15,7 @@ export function createUserCard(user) {
     name.className = classNames.userName;
 
     const age = document.createElement("div");
-    age.textContent = `גיל ${user.age}`;
+    age.textContent = `${displayNames.age} ${user.age}`;
     age.className = classNames.age;
 
     const nation = document.createElement("img");

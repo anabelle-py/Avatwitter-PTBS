@@ -175,11 +175,11 @@ body {
 }
 
 .long-input {
-    width: 70%;
+    width: 90%;
 }
 
 .medium-input {
-    width: 30%;
+    width: 35%;
 }
 
 .form-input.no-arrows::-webkit-outer-spin-button,

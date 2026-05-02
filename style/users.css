@@ -1,10 +1,9 @@
-
 .user-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.2rem;
 }
 
 .numeric-inputs {
@@ -12,7 +11,7 @@
 }
 
 .tel-input {
-    margin-right: 0.8rem;
+    margin-right: 1rem;
 }
 
 .users-container {
