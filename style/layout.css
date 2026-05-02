@@ -37,7 +37,7 @@ main {
 
 .header-title {
     font-family: Passero;
-    background: linear-gradient(90deg,  rgb(var(--primary-color)),  rgb(var(--secondary-color)));
+    background: linear-gradient(90deg, rgb(var(--primary-color)), rgb(var(--secondary-color)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

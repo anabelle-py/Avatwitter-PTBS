@@ -4,22 +4,30 @@ import { isTextOffensive } from '../utils/bannedUtils.js';
 import { registeredUsers } from '../events/userFormEvent.js';
 import { createProfilePicture } from './userCardGenerator.js';
 import { TweetType } from '../models/Tweet.js';
+import { elementIds } from '../constants/elementIds.js';
+import { displayNames } from '../constants/DisplayNames.js';
 
-export function createTweetElement(tweet, tweetEditCallback) {
+export function createTweetElement(tweet, tweetEditCallback, tweetDeleteCallback) {
     const tweetContainer = document.createElement('div');
     tweetContainer.id = tweet.id;
-    tweetContainer.className = `${classNames.tweet} ${classNames.paper} ${tweet.type === TweetType.normal ? '' : 'fight'}`;
+    tweetContainer.className = `${classNames.tweet} ${classNames.paper} ${tweet.type === TweetType.normal ? '' : TweetType.fight}`;
+
+    const editCallback = () => tweetEditCallback(tweet, tweetContainer);
 
     const tweetHeaderEl = createTweetHeader(
         tweet.author,
         tweet.date,
         isTextOffensive(tweet.content),
         tweetContainer,
-        tweetEditCallback,
+        editCallback,
+        tweetDeleteCallback,
+        tweet.id,
+        tweet.isEdited
     );
 
     const contentEl = document.createElement('p');
     contentEl.className = classNames.tweetContent;
+    contentEl.id = `${elementIds.tweetContent}-${tweet.id}`;
     contentEl.textContent = tweet.content;
 
     tweetContainer.appendChild(tweetHeaderEl);
@@ -33,41 +41,82 @@ function createTweetHeader(
     isDeletable,
     tweetEl,
     tweetEditCallback,
+    tweetDeleteCallback,
+    tweetId,
+    isEdited
 ) {
     const header = document.createElement('div');
     header.className = classNames.tweetHeader;
 
-    const leftPart = document.createElement('span');
+    const rightPart = createTweetHeaderRightPart(author);
+    const leftPart = createTweetHeaderLeftPart(
+        isDeletable,
+        tweetEl,
+        tweetDeleteCallback,
+        tweetId,
+        isEdited,
+        date,
+        tweetEditCallback
+    );
+
+    header.appendChild(rightPart);
+    header.appendChild(leftPart);
+
+    return header;
+}
+
+function createTweetHeaderRightPart(author) {
     const rightPart = document.createElement('span');
     rightPart.className = classNames.userDetails;
+
+    const profilePic = getProfilePictureFromAuthorName(author);
+    rightPart.appendChild(profilePic);
 
     const authorEl = document.createElement('h4');
     authorEl.className = classNames.tweetAuthor;
     authorEl.textContent = author;
+    rightPart.appendChild(authorEl);
 
-    const dateEl = document.createElement('span');
-    dateEl.className = classNames.tweetTime;
-    dateEl.textContent = formatTweetTime(date);
+    return rightPart;
+}
 
-    const profilePic = getProfilePictureFromAuthorName(author);
+function createTweetHeaderLeftPart(
+    isDeletable,
+    tweetEl,
+    tweetDeleteCallback,
+    tweetId,
+    isEdited,
+    date,
+    tweetEditCallback
+) {
+    const leftPart = document.createElement('span');
+
+    const callback = () => {
+        tweetDeleteCallback(tweetId);
+        tweetEl.remove();
+    }
 
     if (isDeletable) {
-        const deleteButton = createIconButton('./assets/delete.svg', () =>
-            tweetEl.remove(),
-        ); //CR: forgot to remove the tweet from the local storage
+        const deleteButton = createIconButton('./assets/delete.svg', callback);
         leftPart.appendChild(deleteButton);
+    }
+
+    if (isEdited) {
+        const editedIndicator = document.createElement('span');
+        editedIndicator.textContent = displayNames.edited;
+        editedIndicator.className = classNames.tweetTime;
+        leftPart.appendChild(editedIndicator);
     }
 
     const editButton = createIconButton('./assets/edit.svg', tweetEditCallback);
     leftPart.appendChild(editButton);
 
+    const dateEl = document.createElement('span');
+    dateEl.className = classNames.tweetTime;
+    dateEl.textContent = formatTweetTime(date);
     leftPart.appendChild(dateEl);
-    rightPart.appendChild(profilePic);
-    rightPart.appendChild(authorEl);
-    header.appendChild(rightPart);
-    header.appendChild(leftPart);
 
-    return header;
+    return leftPart;
 }
 
 function getProfilePictureFromAuthorName(author) {

@@ -11,7 +11,12 @@ export const classNames = {
     userCard: 'user-card',
     userName: 'username',
     age: 'age',
+    button: 'button',
     ghostButton: 'ghost-button',
     profilePic: 'profile-pic',
     userDetails: 'user-details',
+    tweetEditTextarea: 'tweet-edit-textarea',
+    tweetEditContainer: 'tweet-edit-container',
+    tweetEditButton: 'tweet-edit-button',
+    formInput: 'form-input',
 }

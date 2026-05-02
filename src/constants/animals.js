@@ -12,7 +12,7 @@ export const animalsList = [
     {
         name: 'platypusBear',
         displayName: 'דוב פלטיפוס',
-        imgUrl: './assets/animals/Platypus_bear.png', 
+        imgUrl: './assets/animals/Platypus_bear.png',
     },
     {
         name: 'turtleDuck',

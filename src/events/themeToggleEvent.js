@@ -1,12 +1,14 @@
 import { classNames } from '../constants/classNames.js';
 import { stateItems } from '../constants/stateItems.js';
 import { elementIds } from '../constants/elementIds.js';
+import { themes } from '../constants/themes.js';
 
-const lightModeIcon = `<img src="assets/Tui.png" class="${classNames.largeIcon}"/>`;
-const darkModeIcon = `<img src="assets/La.png" class="${classNames.largeIcon}"/>`;
+const lightModeImageFilePath = 'assets/Tui.png';
+const darkModeImageFilePath = 'assets/La.png';
 
-const lightMode = 'light';
-const darkMode = 'dark';
+const lightModeIcon = `<img src="${lightModeImageFilePath}" class="${classNames.largeIcon}"/>`;
+const darkModeIcon = `<img src="${darkModeImageFilePath}" class="${classNames.largeIcon}"/>`;
+
 
 function toggleTheme() {
     const body = document.body;
@@ -14,17 +16,21 @@ function toggleTheme() {
 
     updateThemeIcon(isDark);
 
-    localStorage.setItem(stateItems.theme, isDark ? darkMode : lightMode);
+    localStorage.setItem(stateItems.theme, isDark ? themes.dark : themes.light);
 }
 
 function updateThemeIcon(isDark) {
     const themeButton = document.getElementById(elementIds.themeToggle);
-    themeButton.innerHTML = isDark ? lightModeIcon : darkModeIcon; //CR: don't use innerHTML, use DOM manipulation instead
+    themeButton.textContent = '';
+    const icon = document.createElement('img');
+    icon.src = isDark ? lightModeImageFilePath : darkModeImageFilePath;
+    icon.className = classNames.largeIcon;
+    themeButton.appendChild(icon);
 }
 
 function loadTheme() {
     const saved = localStorage.getItem(stateItems.theme);
-    const isDark = saved === darkMode;
+    const isDark = saved === themes.dark;
 
     if (isDark) {
         document.body.classList.add(classNames.darkTheme);
