@@ -24,6 +24,10 @@
   justify-self: start;
 }
 
+#age {
+  width: 4.2rem;
+}
+
 .tel-input {
   margin-right: 0;
 }
