@@ -1,47 +1,71 @@
 .user-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 0.2rem;
+  display: grid;
+  gap: 0.45rem;
+  align-items: stretch;
 }
 
 .numeric-inputs {
-    margin-top: 1.5rem;
+  margin-top: 0.25rem;
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: start;
+}
+
+.numeric-inputs .input-label {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.numeric-inputs .form-input {
+  width: 6.5rem;
+  min-width: 0;
+  justify-self: start;
+}
+
+#age {
+  width: 4.2rem;
 }
 
 .tel-input {
-    margin-right: 1rem;
+  margin-right: 0;
 }
 
 .users-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  margin-top: 1rem;
 }
 
 .user-card {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-radius: 12px;
+  background: rgba(255 255 255 / 0.06);
+  border: 1px solid rgba(255 255 255 / 0.14);
 }
 
 .username {
-    font-weight: 600;
+  font-weight: 600;
+  font-size: 0.92rem;
 }
 
 .age {
-    font-size: 0.9rem;
-    color: rgb(var(--primary-color));
+  font-size: 0.82rem;
+  color: rgb(var(--primary-color));
 }
 
 .profile-pic {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    object-fit: cover;
-    overflow: hidden;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px rgba(255 255 255 / 0.2);
 }
